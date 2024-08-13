@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leave_manager
+spec:
+  selector:
+    matchLabels:
+      app: leave_manager
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: leave_manager
+    spec:
+      containers:
+        - name: leave_manager
+          image: leave_manager:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
